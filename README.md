@@ -50,7 +50,7 @@ Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
 
         ! WARNING ! If the user gives the invalid country name, no error occur. Function returns the empty list.
 
-4\) **get_percentage**( country: str, years: tuple | list) -> float :
+4\) **get_percentage**( country: str, years: tuple \| list) -> float :
 
     Returns the percentage of increase or decrease in population in the given country between the given years.
     If the population has increased, percentage is negative.
