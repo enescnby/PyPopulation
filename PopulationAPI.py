@@ -5,6 +5,7 @@ Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
 """
 import pandas
 
+
 class PopulationAPI:
 
     """
@@ -72,7 +73,32 @@ class PopulationAPI:
             x.get_population_list( "Turkiye", (1960, 1980) )
         """
         try:
-            data_series = self.dataframe.loc[self.dataframe['Country'] == country.lower(), str(years[0]):str(years[1])].astype(int)
+            data_series = self.dataframe.loc[self.dataframe['Country'] == country.lower(
+            ), str(years[0]):str(years[1])].astype(int)
         except KeyError:
             raise PopulationAPI.DataError("There is no data in given year.")
         return data_series.values.flatten().tolist()
+
+    def get_percentage(self, country: str, years: tuple | list) -> float:
+        """
+        Returns the percentage of increase or decrease between the given years.\n
+        If population has increased percentage is positive.\n
+        If population has decreased percentage is negative.\n
+
+        Example of calling:
+
+            x = PopulaitonAPI( )
+            x.get_percentage('Turkiye', (1960,1961))
+        """
+        try:
+            data1 = int(
+                self.dataframe.loc[self.dataframe['Country'] == country.lower(), str(years[0])])
+            data2 = int(
+                self.dataframe.loc[self.dataframe['Country'] == country.lower(), str(years[1])])
+            percentage = (data2 - data1) * 100 / data1
+        except KeyError:
+            raise PopulationAPI.DataError("There is no data in given year.")
+
+        except TypeError:
+            raise PopulationAPI.DataError("Invalid country name.")
+        return percentage
