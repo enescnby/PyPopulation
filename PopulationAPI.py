@@ -67,7 +67,7 @@ class PopulationAPI:
         """
         Returns the list of populations the given country between the given years.\n
         If the given country does not exist in data frame, returns empty list.\n
-        If one of the given years does not exist in data frame, DataError occurs.
+        If one of the given years does not exist in data frame, DataError occurs.\n
         Example of calling:\n
             x = PopulationAPI( )\n
             x.get_population_list( "Turkiye", (1960, 1980) )
