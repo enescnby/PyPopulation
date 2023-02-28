@@ -1,12 +1,17 @@
 """
-Population API for 1960-2021 population datas.
+Population API for 1960-2020 population datas.
 
 Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
 """
-import pandas, numpy
-
+import pandas
 
 class PopulationAPI:
+
+    """
+    Population API for 1960-2020 population datas.
+
+    Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
+    """
 
     class DataError(Exception):
 
@@ -21,8 +26,21 @@ class PopulationAPI:
         self.file_name = excel_file_name
         self.dataframe = pandas.read_excel(self.file_name)
 
-    def get_population(self, country: str, year: str | int) -> int | None:
+    def list_countries(self) -> list:
+        """
+        Returns the list of countries.
+        """
 
+        return list(self.dataframe.loc[:, 'Country'])
+
+    def get_population(self, country: str, year: str | int) -> int | None:
+        """
+        Returns the population of given country in given year.\n
+        If the given country or the given year does not exist in data frame, DataError occurs.\n
+        Example of calling:\n
+            x = PopulationAPI( )\n
+            x.get_population( "Turkiye", 1980 )
+        """
         try:
             int(year)
         except ValueError:
@@ -45,10 +63,16 @@ class PopulationAPI:
         return data
 
     def get_population_list(self, country: str, years: tuple | list) -> list:
-
-        data_series = self.dataframe.loc[self.dataframe['Country'] == country.lower(), str(years[0]):str(years[1])].astype(int)
+        """
+        Returns the list of populations the given country between the given years.\n
+        If the given country does not exist in data frame, returns empty list.\n
+        If one of the given years does not exist in data frame, DataError occurs.
+        Example of calling:\n
+            x = PopulationAPI( )\n
+            x.get_population_list( "Turkiye", (1960, 1980) )
+        """
+        try:
+            data_series = self.dataframe.loc[self.dataframe['Country'] == country.lower(), str(years[0]):str(years[1])].astype(int)
+        except KeyError:
+            raise PopulationAPI.DataError("There is no data in given year.")
         return data_series.values.flatten().tolist()
-
-x = PopulationAPI()
-lst = x.get_population_list('Turkiye', (1960,1970))
-print(lst)
