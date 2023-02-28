@@ -48,7 +48,3 @@ class PopulationAPI:
 
         data_series = self.dataframe.loc[self.dataframe['Country'] == country.lower(), str(years[0]):str(years[1])].astype(int)
         return data_series.values.flatten().tolist()
-
-x = PopulationAPI()
-lst = x.get_population_list('Turkiye', (1960,1970))
-print(lst)
