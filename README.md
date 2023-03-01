@@ -24,7 +24,7 @@ Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
     Example Calling Statement:
         
         --> api = PopulationAPI()
-        --> population = api.get_population("Turkiye", 1980) or api.get_population("Turkiye", "1980")
+        --> population = api.get_population("World", 1980) or api.get_population("World", "1980")
     
     Possible Errors:
 
@@ -41,8 +41,8 @@ Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
     Exampe Calling Statement:
     
       --> api = PopulationAPI()
-      --> pop_list = api.get_population_list("Turkiye", (1960, 1963))
-      # pop_list = [Population of Turkiye in 1960, Population of Turkiye in 1962, Population of Turkiye in 1963]
+      --> pop_list = api.get_population_list("World", (1960, 1963))
+      # pop_list = [Population of World in 1960, Population of World in 1962, Population of World in 1963]
       
     Possible Errors:
     
@@ -59,7 +59,7 @@ Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
     Example Calling Statemet:
     
       --> api = PopulationAPI()
-      --> perc = api.get_percentage( "Turkiye", (1960,1961) )
+      --> perc = api.get_percentage( "World", (1960,1961) )
 
     Possible Errors:
     
