@@ -1,7 +1,7 @@
-# PopulationAPI  [![Owner](https://img.shields.io/badge/owner-enescnby-blue)](https://github.com/enescnby)
+# PyPopulation  [![Owner](https://img.shields.io/badge/owner-enescnby-blue)](https://github.com/enescnby)
 
 
-Population API for 1960-2020 population datas.
+Population class for 1960-2020 population datas.
 
 Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
 
