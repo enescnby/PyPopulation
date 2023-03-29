@@ -1,5 +1,5 @@
 """
-Population API for 1960-2020 population datas.
+Population class for 1960-2020 population datas.
 
 Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
 """
@@ -9,7 +9,7 @@ import pandas
 class PopulationAPI:
 
     """
-    Population API for 1960-2020 population datas.
+    Population class for 1960-2020 population datas.
 
     Data Source: The World Bank (https://data.worldbank.org/indicator/SP.POP.TOTL)
     """
